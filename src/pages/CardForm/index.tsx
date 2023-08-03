@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import BGS from "./imports";
 import CardFront from "../../components/CardFront";
 import "./index.css";
+import CardInner from "../../components/CardInner";
 
 const CardForm = () => {
   const cardBgArr = useMemo(
@@ -31,7 +32,7 @@ const CardForm = () => {
           <div className='cardItemSide -back'></div>
         </div>
       </div>
-      <div className='cardFormInner'>inner content</div>
+      <CardInner />
     </div>
   );
 };

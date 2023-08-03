@@ -73,7 +73,6 @@
   object-fit: cover;
 }
 .cardItemWrapper {
-  font-family: Source Code Pro, monospace;
   padding: 25px 15px;
   position: relative;
   z-index: 4;
@@ -189,4 +188,173 @@
 .cardItemDateItem span {
   width: 22px;
   display: inline-block;
+}
+.cardItemSide.-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transform: perspective(2000px) rotateY(-180deg) rotateX(0deg)
+    rotate(0deg);
+  transform: perspective(2000px) rotateY(-180deg) rotateX(0deg) rotate(0deg);
+  z-index: 2;
+  padding: 0;
+  height: 100%;
+}
+/* innnnnerrrrrrrrrrrrrrrrrrrrrrrr---------------------------- */
+.cardFormInner {
+  background: #fff;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 0.4);
+  box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 0.4);
+  border-radius: 10px;
+  padding: 35px;
+  padding-top: 180px;
+}
+.cardInput {
+  margin-bottom: 20px;
+  position: relative;
+}
+.cardInput-label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #1a3b5d;
+  width: 100%;
+  display: block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cardInput-input {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid #ced6e0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  padding: 5px 15px;
+  background: none;
+  color: #1a3b5d;
+  outline: none;
+}
+.cardInput-cardNumber {
+  padding-right: 47px;
+}
+.cardInput-input:focus {
+  border: 3px solid #2364d2;
+}
+.cardInput-eye:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.cardInput-eye {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  font-size: 24px;
+  border-radius: 50%;
+  top: 50%;
+  right: 15px;
+  opacity: 0.75;
+  color: #8c9cae;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  display: inline-flex;
+  border: 2px solid currentColor;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.cardInput-eye:after,
+.cardInput-eye:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  -webkit-transform: scale(0.1);
+  transform: scale(0.1);
+  opacity: 0;
+}
+.cardInput-eye:before {
+  background: #fff;
+  width: 0.35em;
+  height: 0.35em;
+  top: 6px;
+  left: 6px;
+  z-index: 2;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.cardInput-eye:after {
+  top: 3px;
+  left: 3px;
+  background: currentColor;
+  width: 0.6em;
+  height: 0.6em;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.cardFormRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.cardForm-col {
+  -webkit-box-flex: 1;
+  -ms-flex: auto;
+  flex: auto;
+  margin-right: 35px;
+}
+.cardForm-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.cardForm-group .cardInput-input {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 15px;
+}
+.cardForm-col.-cvv {
+  max-width: 150px;
+}
+.cardForm-col:last-child {
+  margin-right: 0;
+}
+.cardForm-btn {
+  width: 100%;
+  height: 55px;
+  background: #2364d2;
+  border: none;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: 500;
+  -webkit-box-shadow: 3px 10px 20px 0 rgba(35, 100, 210, 0.3);
+  box-shadow: 3px 10px 20px 0 rgba(35, 100, 210, 0.3);
+  color: #fff;
+  margin-top: 20px;
+  cursor: pointer;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
