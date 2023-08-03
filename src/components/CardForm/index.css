@@ -1,0 +1,192 @@
+.cardForm {
+  max-width: 570px;
+  margin: auto;
+  width: 100%;
+}
+.cardList {
+  margin-bottom: -130px;
+}
+.cardItem {
+  max-width: 430px;
+  height: 270px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.cardItemSide {
+  border-radius: 15px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 20px 60px 0 rgba(14, 42, 90, 0.55);
+  box-shadow: 0 20px 60px 0 rgba(14, 42, 90, 0.55);
+  -webkit-transform: perspective(2000px) rotateY(0deg) rotateX(0deg)
+    rotate(0deg);
+  transform: perspective(2000px) rotateY(0deg) rotateX(0deg) rotate(0deg);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 0.8s cubic-bezier(0.71, 0.03, 0.56, 0.85);
+  transition: all 0.8s cubic-bezier(0.71, 0.03, 0.56, 0.85);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  height: 100%;
+}
+.cardItemFocus,
+.cardItemFocus:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.cardItemFocus {
+  z-index: 3;
+  border-radius: 5px;
+  -webkit-transition: all 0.35s cubic-bezier(0.71, 0.03, 0.56, 0.85);
+  transition: all 0.35s cubic-bezier(0.71, 0.03, 0.56, 0.85);
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border: 2px solid hsla(0, 0%, 100%, 0.65);
+}
+.cardItemCover,
+.cardItemCover:after {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.cardItemCover {
+  background-color: #1c1d27;
+  background-image: linear-gradient(147deg, #354fce, #0c296b 74%);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.cardItemBg {
+  max-width: 100%;
+  display: block;
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.cardItemWrapper {
+  font-family: Source Code Pro, monospace;
+  padding: 25px 15px;
+  position: relative;
+  z-index: 4;
+  height: 100%;
+  text-shadow: 7px 6px 10px rgba(14, 42, 90, 0.8);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cardItemTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 0 10px;
+}
+.cardItemChip {
+  width: 60px;
+}
+.cardItemType {
+  height: 45px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  max-width: 100px;
+  margin-left: auto;
+  width: 100%;
+}
+.cardItemNumber {
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  font-size: 27px;
+  margin-bottom: 25px;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.cardItem-numberItem {
+  width: 16px;
+  display: inline-block;
+}
+.cardItem-numberItem.-active {
+  width: 30px;
+}
+.cardItemContent {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.cardItemInfo {
+  color: #fff;
+  width: 100%;
+  max-width: calc(100% - 85px);
+  padding: 10px 15px;
+  font-weight: 500;
+  display: block;
+  cursor: pointer;
+}
+.cardItemHolder {
+  opacity: 0.7;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.cardItemName {
+  font-size: 18px;
+  line-height: 1;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+.cardItemDate {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 18px;
+  margin-left: auto;
+  padding: 10px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 80px;
+  white-space: nowrap;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.cardItemDateTitle {
+  opacity: 0.7;
+  font-size: 13px;
+  padding-bottom: 6px;
+  width: 100%;
+}
+.cardItemDateItem {
+  position: relative;
+}
+.cardItemDateItem span {
+  width: 22px;
+  display: inline-block;
+}
