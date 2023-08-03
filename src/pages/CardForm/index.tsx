@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import BGS from "./imports";
-import CardFront from "../CardFront";
+import CardFront from "../../components/CardFront";
 import "./index.css";
 
 const CardForm = () => {
