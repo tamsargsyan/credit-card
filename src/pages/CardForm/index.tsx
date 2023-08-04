@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import BGS from "./imports";
 import CardFront from "../../components/CardFront";
-import "./index.css";
 import CardInner from "../../components/CardInner";
+import "./index.css";
 
 const CardForm = () => {
   const cardBgArr = useMemo(
@@ -23,16 +23,19 @@ const CardForm = () => {
     const randomIndex = Math.floor(Math.random() * cardBgArr.length);
     setRandomImage(cardBgArr[randomIndex]);
   }, [cardBgArr]);
-
+  const cardItemFocusRef = useRef<HTMLDivElement>(null);
   return (
     <div className='cardForm'>
       <div className='cardList'>
         <div className='cardItem'>
-          <CardFront randomImage={randomImage} />
+          <CardFront
+            cardItemFocusRef={cardItemFocusRef}
+            randomImage={randomImage}
+          />
           <div className='cardItemSide -back'></div>
         </div>
       </div>
-      <CardInner />
+      <CardInner cardItemFocusRef={cardItemFocusRef} />
     </div>
   );
 };

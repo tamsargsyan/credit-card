@@ -3,9 +3,13 @@ import VISA from "../../assets/visa.png";
 
 interface CardFrontProps {
   randomImage: string;
+  cardItemFocusRef: any;
 }
 
-const CardFront: React.FC<CardFrontProps> = ({ randomImage }) => {
+const CardFront: React.FC<CardFrontProps> = ({
+  randomImage,
+  cardItemFocusRef,
+}) => {
   const cardItemNumbersArr = new Array(19).fill(null);
   const renderCardItem = (index: number) => (
     <span key={index}>
@@ -22,7 +26,7 @@ const CardFront: React.FC<CardFrontProps> = ({ randomImage }) => {
 
   return (
     <div className='cardItemSide -front'>
-      <div className='cardItemFocus'></div>
+      <div className='cardItemFocus' ref={cardItemFocusRef}></div>
       <div className='cardItemCover'>
         <img src={randomImage} alt='Background' className='cardItemBg' />
       </div>
