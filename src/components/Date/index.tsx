@@ -8,7 +8,7 @@ interface DateProps {
 const Date: React.FC<DateProps> = ({ setInfo }) => {
   const onChange: DatePickerProps["onChange"] = (date, dateString) => {
     const value = dateString.split("-");
-    const year = value[0];
+    const year = value[0].split("").slice(-2).join("");
     const month = value[1];
     setInfo((prev: any) => ({
       ...prev,

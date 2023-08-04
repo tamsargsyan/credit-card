@@ -1,8 +1,5 @@
 * {
   box-sizing: border-box;
-}
-.App {
-  display: flex;
-  justify-content: center;
-  padding: 50px 15px;
+  margin: 0;
+  padding: 0;
 }

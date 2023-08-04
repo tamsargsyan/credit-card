@@ -23,7 +23,33 @@ const CardForm = () => {
     const randomIndex = Math.floor(Math.random() * cardBgArr.length);
     setRandomImage(cardBgArr[randomIndex]);
   }, [cardBgArr]);
+
   const cardItemFocusRef = useRef<HTMLDivElement>(null);
+  const [info, setInfo] = useState({
+    cardNumber: "",
+    cardName: "",
+    cvv: "",
+    month: "",
+    year: "",
+  });
+  const getCardTypes = () => {
+    let re = new RegExp("^4");
+    if (info.cardNumber.match(re) != null) return { type: "visa", n: 19 };
+
+    re = new RegExp("^(34|37)");
+    if (info.cardNumber.match(re) != null) return { type: "amex", n: 18 };
+
+    re = new RegExp("^5[1-5]");
+    if (info.cardNumber.match(re) != null) return { type: "mastercard", n: 19 };
+
+    re = new RegExp("^6011");
+    if (info.cardNumber.match(re) != null) return { type: "discover", n: 19 };
+
+    re = new RegExp("^9792");
+    if (info.cardNumber.match(re) != null) return { type: "troy", n: 19 };
+  };
+  const type = getCardTypes()?.type;
+  const n = getCardTypes()?.n;
   return (
     <div className='cardForm'>
       <div className='cardList'>
@@ -31,11 +57,19 @@ const CardForm = () => {
           <CardFront
             cardItemFocusRef={cardItemFocusRef}
             randomImage={randomImage}
+            info={info}
+            type={type}
+            n={n}
           />
           <div className='cardItemSide -back'></div>
         </div>
       </div>
-      <CardInner cardItemFocusRef={cardItemFocusRef} />
+      <CardInner
+        cardItemFocusRef={cardItemFocusRef}
+        info={info}
+        setInfo={setInfo}
+        n={n}
+      />
     </div>
   );
 };
