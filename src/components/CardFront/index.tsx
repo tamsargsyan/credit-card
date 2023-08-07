@@ -1,76 +1,131 @@
 import CHIP from "../../assets/chip.png";
-import cardTypes from "./imports";
+import { getCardType } from "../CardType";
 interface CardFrontProps {
   randomImage: string;
-  cardItemFocusRef: any;
-  info: any;
-  type: string | undefined;
-  n: number | undefined;
+  focusElementStyle: Object,
+  cardNumberRef: any,
+  cardNumber: any,
+  cardNameRef: any,
+  cardName: any,
+  cardMonth: any,
+  cardYear: any,
+  cardDateRef: any
 }
 
 const CardFront: React.FC<CardFrontProps> = ({
   randomImage,
-  cardItemFocusRef,
-  info,
-  type,
-  n,
+  focusElementStyle,
+  cardNumberRef,
+  cardNumber,
+  cardNameRef,
+  cardName,
+  cardMonth,
+  cardYear,
+  cardDateRef
 }) => {
-  const cardItemNumbersArr = new Array(type ? n : 16).fill(null);
-  const renderCardItem = (index: number) => (
-    <span key={index}>
-      {(index - 4) % 5 === 0 && index < cardItemNumbersArr.length - 1 ? (
-        <div className='cardItem-numberItem -active'></div>
-      ) : (
-        <div className='cardItem-numberItem'>#</div>
-      )}
-    </span>
-  );
-  const renderedItems = cardItemNumbersArr.map((_, index) =>
-    renderCardItem(index)
-  );
+  const amexCardMask = '#### ###### #####';
+  const otherCardMask = "#### #### #### ####"
+
   return (
-    <div className='cardItemSide -front'>
-      <div className='cardItemFocus' ref={cardItemFocusRef}></div>
-      <div className='cardItemCover'>
-        <img src={randomImage} alt='Background' className='cardItemBg' />
-      </div>
-      <div className='cardItemWrapper'>
-        <div className='cardItemTop'>
-          <img src={CHIP} alt='Chip' className='cardItemChip' />
-          <div className='cardItemType'>
-            {type && (
-              <img
-                //@ts-ignore
-                src={cardTypes[type]}
-                alt='Visa'
-                className='cardItemTypeImg'
-              />
-            )}
-          </div>
-        </div>
-        <label htmlFor='v-card-number' className='cardItemNumber'>
-          {renderedItems}
-        </label>
-        <div className='cardItemContent'>
-          <label htmlFor='v-card-name' className='cardItemInfo'>
-            <div className='cardItemHolder'>Card Holder</div>
-            <div className='cardItemName'>Full Name</div>
-          </label>
-          <div className='cardItemDate'>
-            <label htmlFor='v-card-month' className='cardItemDateTitle'>
-              Expires
-            </label>
-            <label htmlFor='v-card-month' className='cardItemDateItem'>
-              {info.month ? <span>{info.month}</span> : <span>MM</span>}
-            </label>
-            /
-            <label htmlFor='v-card-year' className='cardItemDateItem'>
-              {info.year ? <span>{info.year}</span> : <span>MM</span>}
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div
+              className={`card-item__side -front`}
+            >
+              <div className="card-item__focus" style={focusElementStyle}>
+
+              </div>
+              <div className="card-item__cover">
+                <img
+                  src={randomImage}
+                  alt="Background"
+                  className="card-item__bg"
+                />
+              </div>
+              <div className="card-item__wrapper">
+                <div className="card-item__top">
+                  <img
+                    src={CHIP}
+                    alt="Chip"
+                    className="card-item__chip"
+                  />
+                  <div className="card-item__type">
+                    <img
+                      src={getCardType(cardNumber)}
+                      alt="Card Type"
+                      className="card-item__typeImg"
+                    />
+                  </div>
+                </div>
+                <label
+                htmlFor="cardNumber"
+                className="card-item__number"
+                ref={cardNumberRef}
+                >
+                {getCardType(cardNumber) === 'amex' ? (
+                  <span>
+                    {amexCardMask.split('').map((char, index) => (
+                      <span
+                        key={index}
+                        className={
+                          index > 4 && index < 14 && cardNumber.length > index && char.trim() !== ''
+                            ? 'card-item__numberItem'
+                            : `card-item__numberItem ${char.trim() === '' ? '-active' : ''}`
+                        }
+                      >
+                        {index > 4 && index < 14 && cardNumber.length > index && char.trim() !== '' ? '*' : cardNumber[index] || '#'}
+                      </span>
+                    ))}
+                  </span>
+                ) : (
+                  <span>
+                    {otherCardMask.split('').map((char, index) => (
+                      <span
+                        key={index}
+                        className={
+                          index > 4 && index < 15 && cardNumber.length > index && char.trim() !== ''
+                            ? 'card-item__numberItem'
+                            : `card-item__numberItem ${char.trim() === '' ? '-active' : ''}`
+                        }
+                      >
+                        {index > 4 && index < 15 && cardNumber.length > index && char.trim() !== '' ? '*' : cardNumber[index] || '#'}
+                      </span>
+                    ))}
+                  </span>
+                )}
+              </label>
+                <div className="card-item__content">
+                  <label
+                    htmlFor="cardName"
+                    className="card-item__info"
+                    ref={cardNameRef}
+                  >
+                    <div className="card-item__holder">Card Holder</div>
+                    {cardName.length ? (
+                      <div className="card-item__name" key="1">
+                        <span className="card-item__nameItem">
+                          {cardName.replace(/\s\s+/g, ' ')}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="card-item__name" key="2">
+                        Full Name
+                      </div>
+                    )}
+                  </label>
+                  <div className="card-item__date" ref={cardDateRef}>
+                    <label htmlFor="cardMonth" className="card-item__dateTitle">
+                      Expires
+                    </label>
+                    <label htmlFor="cardMonth" className="card-item__dateItem">
+                      <span key={cardMonth}>{cardMonth || 'MM'}</span>
+                    </label>
+                    /
+                    <label htmlFor="cardYear" className="card-item__dateItem">
+                      <span key={cardYear}>{cardYear ? cardYear.slice(2, 4) : 'YY'}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
   );
 };
 
