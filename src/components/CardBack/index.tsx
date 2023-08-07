@@ -27,7 +27,7 @@ const CardBack: React.FC<CardBackProps> = ({
         <div className="card-item__type">
           {getCardType && (
             <img
-              src={getCardType(cardNumber)}
+              src={getCardType(cardNumber).img}
               className="card-item__typeImg"
               alt=""
             />

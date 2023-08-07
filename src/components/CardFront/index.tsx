@@ -37,7 +37,7 @@ const CardFront: React.FC<CardFrontProps> = ({
           <img src={CHIP} alt="Chip" className="card-item__chip" />
           <div className="card-item__type">
             <img
-              src={getCardType(cardNumber)}
+              src={getCardType(cardNumber).img}
               alt="Card Type"
               className="card-item__typeImg"
             />
@@ -48,7 +48,7 @@ const CardFront: React.FC<CardFrontProps> = ({
           className="card-item__number"
           ref={cardNumberRef}
         >
-          {getCardType(cardNumber) === "amex" ? (
+          {getCardType(cardNumber).type === "amex" ? (
             <span>
               {amexCardMask.split("").map((char, index) => (
                 <span

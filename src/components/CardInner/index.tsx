@@ -49,7 +49,7 @@ const CardInner: React.FC<CardInnerProps> = ({
   };
 
   const generateCardNumberMask = () => {
-    return getCardType(cardNumber) === "amex" ? 15 : 16;
+    return getCardType(cardNumber).type === "amex" ? 15 : 16;
   };
   const blurInput = () => {
     setFocusElementStyle(focusDefualtStyle);
